@@ -1,0 +1,324 @@
+### ADMIN API STARTS
+# new elite user
+POST http://127.0.0.1:85/api/v1/elite/admin/register-new-elite-member
+content-type: application/json
+
+{
+    "name": "Johnny",
+    "email": "test@mail.com",
+    "startDate": "2025-04-18T23:00:00.000Z",
+    "endDate": "2025-05-18T23:00:00.000Z",
+    "duration": 1,
+    "stateProvince": "Lagos",
+    "country": "Nigeria"
+  }
+
+### manage sub
+POST http://127.0.0.1:85/api/v1/elite/admin/manage-subscription
+content-type: application/json
+
+{
+    "id": "f390612c-9669-414a-b3c2-4d4e2ad086ea",
+    "action": "subscribe"
+  }
+
+### create discount
+POST http://127.0.0.1:85/api/v1/elite/admin/create-discount
+Content-Type: application/json
+
+{
+    "discountType": "percentage",
+    "discountAmount": 25,
+    "startDate": "2025-05-21T23:00:00.000Z",
+    "endDate": "2025-06-21T23:00:00.000Z",
+    "eligibleCountries":  ["Nigeria", "Ghana", "Kenya"],
+    "eligibleRegions": ["Lagos", "Texas"]
+  }
+
+### get all discounts - without ID
+GET http://127.0.0.1:85/api/v1/elite/admin/get-discounts
+
+
+### get all discounts - with ID
+GET http://127.0.0.1:85/api/v1/elite/admin/get-discounts?discountId=0b0ba3bc-1e54-4eaa-a953-e4d413a9490
+
+# ADMIN API ENDS
+
+### 
+POST http://127.0.0.1:85/api/v1/auth/register
+content-type: application/json
+
+{
+    "email": "test2@mail.com",
+    "firstname": "Johnny",
+    "lastname": "Doe",
+    "password": "12345678",
+    "role": "user",
+    "referredBy": "jamie",
+    "phone": "09000000000"
+  }
+
+### login URL
+POST http://127.0.0.1:85/api/v1/auth/login
+content-type: application/json
+
+{
+    "email": "test@mail.com",
+    "password": "12345678"
+}
+
+# live token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1M2ZhYzljLTNjOWQtNDI4My05MDM4LTQ3YTA4NzAyNzZjYyIsImlhdCI6MTczOTYyNTIyNywiZXhwIjoxNzQ0ODA5MjI3fQ.Wg-tPgJ5A9EfaSPnSa77sDHpfnvR_y-AJw6MjwgVfm0
+
+### Dashboard
+GET http://127.0.0.1:85/api/v1/auth/me
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzNGYyYWM0LWRmMDMtNGI0NS1iNTdiLWMzYWMxNDI5ZTQzOCIsImlhdCI6MTczODcwNDc4NSwiZXhwIjoxNzQzODg4Nzg1fQ.4ZBBv-xNjVlD4x6IQAIOWm1okGYHhjW1oIvQMC0UU5M
+
+
+### create-elite-video
+POST http://127.0.0.1:85/api/v1/elite/create-elite-video
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzNGYyYWM0LWRmMDMtNGI0NS1iNTdiLWMzYWMxNDI5ZTQzOCIsImlhdCI6MTczODcwNDc4NSwiZXhwIjoxNzQzODg4Nzg1fQ.4ZBBv-xNjVlD4x6IQAIOWm1okGYHhjW1oIvQMC0UU5M
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="dataFields"
+
+{"title": "Maverick Top Gun 2","description": "American Sci-Fi movie",
+"category": "Movie","directors": ["John", "Doe"],
+"starring": ["John", "Doe"],"genres": "Action",
+"audioLanguage": "English","producers": ["Tom Cruise", "Fox Studios"],
+"studio": "Fox Studio","approvalStatus": false}
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="files"; filename="phone1.jpg"
+Content-Type: image/jpeg
+
+< ./phone1.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="files"; filename="SampleVideo.mp4"
+Content-Type: video/jpeg
+
+< ./a.mp4
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="files"; filename="sample.srt"
+Content-Type: text/plain
+
+< ./sample.srt
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+
+### get-elite-videos
+GET http://127.0.0.1:85/api/v1/elite/get-all-elite-videos
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzNGYyYWM0LWRmMDMtNGI0NS1iNTdiLWMzYWMxNDI5ZTQzOCIsImlhdCI6MTczODcwNDc4NSwiZXhwIjoxNzQzODg4Nzg1fQ.4ZBBv-xNjVlD4x6IQAIOWm1okGYHhjW1oIvQMC0UU5M
+
+
+### get-elite-video-analytics
+GET http://127.0.0.1:85/api/v1/elite/get-elite-video-analytics/b66f23e0-ef66-4522-9faa-96db28990b32
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzNGYyYWM0LWRmMDMtNGI0NS1iNTdiLWMzYWMxNDI5ZTQzOCIsImlhdCI6MTczODcwNDc4NSwiZXhwIjoxNzQzODg4Nzg1fQ.4ZBBv-xNjVlD4x6IQAIOWm1okGYHhjW1oIvQMC0UU5M
+# 14f081b7-995d-4bab-b604-8ae60510ad5f
+
+### add-video-views-analytics
+POST http://127.0.0.1:85/api/v1/elite/add-video-views-analytics
+content-type: application/json
+
+{
+  "videoId": "b66f23e0-ef66-4522-9faa-96db28990b32",
+  "durationWatched": 8,
+  "finishedWatching": true
+}
+
+
+### create-elite-music
+POST http://127.0.0.1:85/api/v1/elite/create-elite-music
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzNGYyYWM0LWRmMDMtNGI0NS1iNTdiLWMzYWMxNDI5ZTQzOCIsImlhdCI6MTczODcwNDc4NSwiZXhwIjoxNzQzODg4Nzg1fQ.4ZBBv-xNjVlD4x6IQAIOWm1okGYHhjW1oIvQMC0UU5M
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="dataFields"
+
+ { 
+  "trackName": "I'm Alive",
+  "trackDescription": "Nostalgic RnB song about love and how loved one mean so much to us",
+  "trackDuration": "00:04:24",
+  "artistName": "Celine Dion",
+  "albumName": "Forever",
+  "genre": "Rhythm n Blues",
+  "language": "Eng",
+  "releaseDate": "1/7/2002"}
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="files"; filename="phone1.jpg"
+Content-Type: image/jpeg
+
+< ./phone1.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="files"; filename="SampleMusic.mp3"
+Content-Type: audio/mpeg
+
+< ./SampleMusic.mp3
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+
+### get-elite-music
+GET http://127.0.0.1:85/api/v1/elite/get-all-elite-music
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzNGYyYWM0LWRmMDMtNGI0NS1iNTdiLWMzYWMxNDI5ZTQzOCIsImlhdCI6MTczODcwNDc4NSwiZXhwIjoxNzQzODg4Nzg1fQ.4ZBBv-xNjVlD4x6IQAIOWm1okGYHhjW1oIvQMC0UU5M
+
+
+### get-elite-music-analytics
+GET http://127.0.0.1:85/api/v1/elite/get-elite-music-analytics/b66f23e0-ef66-4522-9faa-96db28990b32
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzNGYyYWM0LWRmMDMtNGI0NS1iNTdiLWMzYWMxNDI5ZTQzOCIsImlhdCI6MTczODcwNDc4NSwiZXhwIjoxNzQzODg4Nzg1fQ.4ZBBv-xNjVlD4x6IQAIOWm1okGYHhjW1oIvQMC0UU5M
+
+### add-music-analytics
+POST http://127.0.0.1:85/api/v1/elite/add-music-analytics
+content-type: application/json
+
+{
+  "musicId": "b66f23e0-ef66-4522-9faa-96db28990b32",
+  "durationListened":4,
+  "finishedListening": false
+}
+
+### create-elite-podcast
+POST http://127.0.0.1:85/api/v1/elite/create-elite-podcast
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzNGYyYWM0LWRmMDMtNGI0NS1iNTdiLWMzYWMxNDI5ZTQzOCIsImlhdCI6MTczODcwNDc4NSwiZXhwIjoxNzQzODg4Nzg1fQ.4ZBBv-xNjVlD4x6IQAIOWm1okGYHhjW1oIvQMC0UU5M
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="dataFields"
+
+ { 
+  "title": "I'm Alive",
+  "description": "Podcast about love and relationship",
+  "language": "Eng",
+  "category": "love and relationship"
+  }
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="files"; filename="phone1.jpg"
+Content-Type: image/jpeg
+
+< ./phone1.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+
+### add-podcast-episode
+POST http://127.0.0.1:85/api/v1/elite/add-podcast-episode
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzNGYyYWM0LWRmMDMtNGI0NS1iNTdiLWMzYWMxNDI5ZTQzOCIsImlhdCI6MTczODcwNDc4NSwiZXhwIjoxNzQzODg4Nzg1fQ.4ZBBv-xNjVlD4x6IQAIOWm1okGYHhjW1oIvQMC0UU5M
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="dataFields"
+
+ {
+  "episodeTitle": "The love Languages",
+  "podcastId": "85fb80fa-b391-42bb-bf5e-b187fd92c703",
+  "description": "The love Languages",
+  "genre": "Emotional health",
+  "guestName": "Sheyla Strong",
+  "duration": "00:42:11",
+  "releaseDate": "2025/02/12"
+}
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="files"; filename="phone1.jpg"
+Content-Type: image/jpeg
+
+< ./phone1.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="files"; filename="SampleMusic.mp3"
+Content-Type: audio/mpeg
+
+< ./SampleMusic.mp3
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### get-podcast
+GET http://127.0.0.1:85/api/v1/elite/get-podcasts
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzNGYyYWM0LWRmMDMtNGI0NS1iNTdiLWMzYWMxNDI5ZTQzOCIsImlhdCI6MTczODcwNDc4NSwiZXhwIjoxNzQzODg4Nzg1fQ.4ZBBv-xNjVlD4x6IQAIOWm1okGYHhjW1oIvQMC0UU5M
+
+### get-podcast-episodes
+GET http://127.0.0.1:85/api/v1/elite/get-podcast-episodes/85fb80fa-b391-42bb-bf5e-b187fd92c703
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzNGYyYWM0LWRmMDMtNGI0NS1iNTdiLWMzYWMxNDI5ZTQzOCIsImlhdCI6MTczODcwNDc4NSwiZXhwIjoxNzQzODg4Nzg1fQ.4ZBBv-xNjVlD4x6IQAIOWm1okGYHhjW1oIvQMC0UU5M
+# 27746fd5-9d18-4690-b3b3-679c5e3200eb
+
+### get-podcast-episode-analytic
+GET http://127.0.0.1:85/api/v1/elite/get-podcast-episode-analytic/3c0344c9-7d48-4a64-ba21-9f7ef174412e
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzNGYyYWM0LWRmMDMtNGI0NS1iNTdiLWMzYWMxNDI5ZTQzOCIsImlhdCI6MTczODcwNDc4NSwiZXhwIjoxNzQzODg4Nzg1fQ.4ZBBv-xNjVlD4x6IQAIOWm1okGYHhjW1oIvQMC0UU5M
+
+
+### podcast-played-webhook
+POST http://127.0.0.1:85/api/v1/elite/webhook/podcast-played
+content-type: application/json
+
+{
+  "viewerId":"055",
+  "podcastEpisodeId": "3c0344c9-7d48-4a64-ba21-9f7ef174412e",
+  "viewerCountry": "Nigeria",
+  "durationListened": "00:48:11",
+  "completedPlaying": true
+}
+
+
+### upload-book
+POST http://127.0.0.1:85/api/v1/elite/upload-book
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzNGYyYWM0LWRmMDMtNGI0NS1iNTdiLWMzYWMxNDI5ZTQzOCIsImlhdCI6MTczODcwNDc4NSwiZXhwIjoxNzQzODg4Nzg1fQ.4ZBBv-xNjVlD4x6IQAIOWm1okGYHhjW1oIvQMC0UU5M
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="dataFields"
+
+ {
+  "title": "Rich Dad, Poor Dad",
+  "bookDescription": "financial management book teaching wealth management",
+  "genre": "finance",
+  "language": "Eng",
+  "bookPrice": 5000,
+  "totalPages": 84,
+  "dimension": "7.5 x 10 x 10 inches",
+  "publisherName": "Ronald Jameson",
+  "publicationDate": "10/2/2025",
+  "stickyNotes": true,
+  "pageFlipOption": true,
+  "authorName": "Donald J. Thompson",
+  "authorDescription": "Financial expert with 20 years experience"
+}
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="coverImage"; filename="phone1.jpg"
+Content-Type: image/jpeg
+
+< ./phone1.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="authorImage"; filename="phone1.jpg"
+Content-Type: image/jpeg
+
+< ./phone1.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="bookFile"; filename="samplePdf2.pdf"
+Content-Type: application/pdf
+
+< ./samplePdf2.pdf
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### get-elite-books
+GET http://127.0.0.1:85/api/v1/elite/get-books
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzNGYyYWM0LWRmMDMtNGI0NS1iNTdiLWMzYWMxNDI5ZTQzOCIsImlhdCI6MTczODcwNDc4NSwiZXhwIjoxNzQzODg4Nzg1fQ.4ZBBv-xNjVlD4x6IQAIOWm1okGYHhjW1oIvQMC0UU5M
+
+
+### edit-elite-book
+PUT http://127.0.0.1:85/api/v1/elite/edit-book-data/:6
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzNGYyYWM0LWRmMDMtNGI0NS1iNTdiLWMzYWMxNDI5ZTQzOCIsImlhdCI6MTczODcwNDc4NSwiZXhwIjoxNzQzODg4Nzg1fQ.4ZBBv-xNjVlD4x6IQAIOWm1okGYHhjW1oIvQMC0UU5M
+content-type: application/json
+
+{
+"title": "Rich Dad, Poor Dad - part 1",
+"bookDescription": "financial management book teaching wealth management",
+"genre": "finance",
+"language": "Eng",
+"bookPrice": 5000,
+"totalPages": 84,
+"dimension": "7.5 x 10 x 10 inches",
+"publisherName": "Ronald Jameson",
+"publicationDate": "10/2/2025",
+"stickyNotes": false,
+"pageFlipOption": false,
+"authorName": "Donald J. Thompson jr",
+"authorDescription": "Financial expert with 20 years experience"
+}
+
+### delete-elite-book
+GET http://127.0.0.1:85/api/v1/elite/delete-book/5
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzNGYyYWM0LWRmMDMtNGI0NS1iNTdiLWMzYWMxNDI5ZTQzOCIsImlhdCI6MTczODcwNDc4NSwiZXhwIjoxNzQzODg4Nzg1fQ.4ZBBv-xNjVlD4x6IQAIOWm1okGYHhjW1oIvQMC0UU5M

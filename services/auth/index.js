@@ -1,0 +1,17 @@
+module.exports = {
+  login2FA: require("./login2FA"),
+  login: require("./login"),
+  getMe: require("./me"),
+  register: require("./register"),
+  verifyUser: require("./verifyUser"),
+  addPhone: require("./addPhone"),
+  changePassword: require("./changePassword"),
+  resendOTP: require("./resendOTP"),
+  verifyUserPhone: require("./verifyPhone"),
+  resendPhoneOTP: require("./resendPhoneOTP"),
+  askForChangePassword: require("./askForChangePassword"),
+  forgotPassword: require("./forgotPassword"),
+  resetPassword: require("./resetPassword"),
+  validateToken: require("./validateToken"),
+  addTransactionPin: require("./addTransactionPin.js"),
+};

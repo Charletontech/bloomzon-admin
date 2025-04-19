@@ -1,0 +1,69 @@
+{
+    "name": "node-api-template",
+    "version": "1.0.0",
+    "description": "A simple startup package for nodejs Applications",
+    "main": "app.js",
+    "scripts": {
+        "test": "mocha --recursive --exit",
+        "start": "pm2-runtime start ecosystem.config.js --env production",
+        "dev": "nodemon app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/J-Engineers/Node-api-bloomzon.git"
+    },
+    "author": "Ugbogu Justice",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/J-Engineers/Node-api-bloomzon/issues"
+    },
+    "homepage": "https://github.com/J-Engineers/Node-api-bloomzon#readme",
+    "dependencies": {
+        "@bull-board/api": "latest",
+        "@bull-board/express": "latest",
+        "@sequelize/core": "^7.0.0-alpha.43",
+        "aws-sdk": "latest",
+        "axios": "latest",
+        "bcryptjs": "latest",
+        "bull": "latest",
+        "chai": "latest",
+        "cloudinary": "^2.5.1",
+        "colors": "latest",
+        "cookie-parser": "latest",
+        "cors": "latest",
+        "datauri": "latest",
+        "dotenv": "latest",
+        "express": "latest",
+        "express-mongo-sanitize": "latest",
+        "express-rate-limit": "latest",
+        "express-session": "latest",
+        "generate-password": "latest",
+        "helmet": "latest",
+        "hpp": "latest",
+        "ioredis": "latest",
+        "joi": "latest",
+        "jsonwebtoken": "latest",
+        "mime-types": "latest",
+        "mocha": "latest",
+        "moment": "latest",
+        "morgan": "latest",
+        "multer": "latest",
+        "mysql": "latest",
+        "mysql2": "latest",
+        "nodemailer": "latest",
+        "pm2": "latest",
+        "querystring": "latest",
+        "randomatic": "latest",
+        "referral-code-generator": "latest",
+        "sequelize": "latest",
+        "speakeasy": "^2.0.0",
+        "supertest": "latest",
+        "twitter-api-v2": "latest",
+        "uuid": "^11.0.4",
+        "winston": "latest",
+        "xss-clean": "^0.1.4"
+    },
+    "devDependencies": {
+        "nodemon": "latest"
+    }
+}
