@@ -25,8 +25,10 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.NUMBER,
       allowNull: false,
     },
-    status: {
-      type: Sequelize.ENUM("active", "expired", "cancelled"),
+   status: {
+      type: Sequelize.ENUM({
+      values: ["active", "expired", "cancelled"],
+      }),
       allowNull: false,
       defaultValue: "active",
     },
