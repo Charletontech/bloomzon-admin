@@ -3,11 +3,11 @@ const ErrorResponse = require("../../utils/errorResponse");
 
 const validateGetDiscounts = async (req, res, next) => {
   const schema = Joi.object({
-    discountId: Joi.string().optional(), // Example of how you might use userId for filtering
+    discountId: Joi.string().optional(),
   });
 
   try {
-    const value = await schema.validateAsync(req.query); // Assuming query params for get requests
+    const value = await schema.validateAsync(req.query);
     req.query = value;
     return next();
   } catch (err) {

@@ -50,6 +50,7 @@
         "multer": "latest",
         "mysql": "latest",
         "mysql2": "latest",
+        "node-cron": "^3.0.3",
         "nodemailer": "latest",
         "pm2": "latest",
         "querystring": "latest",

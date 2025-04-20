@@ -122,6 +122,8 @@ app.use(errorHandler);
 
 const PORT = process.env.PORT;
 
+// Load Cron Jobs
+require("./cronJobs/autoExpiry");
 app.listen(
   PORT,
   console.log(

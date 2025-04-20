@@ -13,6 +13,9 @@ content-type: application/json
     "country": "Nigeria"
   }
 
+### get all elite members
+GET http://localhost:85/api/v1/elite/admin/all-elite-members HTTP/1.1
+
 ### manage sub
 POST http://127.0.0.1:85/api/v1/elite/admin/manage-subscription
 content-type: application/json
@@ -21,6 +24,33 @@ content-type: application/json
     "id": "f390612c-9669-414a-b3c2-4d4e2ad086ea",
     "action": "subscribe"
   }
+
+### Submit Elite Feedback
+POST http://localhost:85/api/v1/elite/admin/submit-feedback
+Content-Type: application/json
+
+{
+  "eliteMemberId": "c5f12345-678c-4def-9a12-abcdef654322",
+  "feedbackMessage": "Great service, but delivery could be faster.",
+  "feedbackType": "suggestion"
+}
+
+### Get Elite Feedbacks (all)
+GET http://localhost:85/api/v1/elite/admin/feedback
+
+### Get Elite Feedbacks (filtered by status and type)
+GET http://localhost:85/api/v1/elite/admin/feedback?status=resolved&feedbackType=complaint
+
+### Update Elite Feedback Status
+PATCH http://localhost:85/api/v1/elite/admin/update-feedback-status
+Content-Type: application/json
+
+{
+  "feedbackId": "e2f14ce0-223a-48d5-9e14-89bb60c0617e",
+  "status": "resolved"
+}
+
+
 
 ### create discount
 POST http://127.0.0.1:85/api/v1/elite/admin/create-discount
@@ -40,7 +70,25 @@ GET http://127.0.0.1:85/api/v1/elite/admin/get-discounts
 
 
 ### get all discounts - with ID
-GET http://127.0.0.1:85/api/v1/elite/admin/get-discounts?discountId=0b0ba3bc-1e54-4eaa-a953-e4d413a9490
+GET http://127.0.0.1:85/api/v1/elite/admin/get-discounts?discountId=0b0ba3bc-1e54-4eaa-a953-e4d413a94902
+
+### Dashboard Analytics Request
+GET http://localhost:85/api/v1/elite/admin/dashboard-analytics HTTP/1.1
+Content-Type: application/json
+# Authorization: Bearer <your_token_here>
+
+### edit discount
+PATCH http://localhost:85/api/v1/elite/admin/update-discount/0b0ba3bc-1e54-4eaa-a953-e4d413a9490a
+Content-Type: application/json
+
+{
+  "title": "Easter Splash sales",
+  "discountAmount": 15.00,
+  "eligibleCountries": ["US", "CA"],
+  "eligibleRegions": ["California", "Ontario"],
+  "isActive": true
+}
+
 
 # ADMIN API ENDS
 

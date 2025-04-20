@@ -62,6 +62,10 @@ db.EliteMembership = require("./eliteAdmin/eliteMembershipPlan.model.js")(
   Sequelize
 );
 db.Discount = require("./eliteAdmin/Discount.model.js")(sequelize, Sequelize);
+db.EliteFeedback = require("./eliteAdmin/EliteFeedback.model.js")(
+  sequelize,
+  Sequelize
+);
 
 // models for Bloomzon Elite Admin service - stops
 
