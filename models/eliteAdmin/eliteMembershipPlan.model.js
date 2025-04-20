@@ -25,21 +25,28 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.NUMBER,
       allowNull: false,
     },
-   status: {
-      type: Sequelize.ENUM({
-      values: ["active", "expired", "cancelled"],
-      }),
-      allowNull: false,
-      defaultValue: "active",
-    },
+  status: {
+  type: Sequelize.STRING,
+  allowNull: false,
+  validate: {
+    isIn: [["active", "expired", "cancelled"]],
+  },
+  defaultValue: "active",
+}
     freeDeliveryEligibility: {
-      type: Sequelize.ENUM("eligible", "not eligible"),
+      type: Sequelize.STRING,
       allowNull: false,
+        validate: {
+    isIn: [["eligible", "not eligible"]],
+  },
       defaultValue: "eligible",
     },
     discountEligibility: {
-      type: Sequelize.ENUM("eligible", "not eligible"),
+      type: Sequelize.STRING,
       allowNull: false,
+       validate: {
+    isIn: [["eligible", "not eligible"]],
+  },
       defaultValue: "eligible",
     },
     walletBalance: {
