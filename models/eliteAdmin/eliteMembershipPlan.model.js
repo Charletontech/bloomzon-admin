@@ -32,7 +32,7 @@ module.exports = (sequelize, Sequelize) => {
     isIn: [["active", "expired", "cancelled"]],
   },
   defaultValue: "active",
-}
+},
     freeDeliveryEligibility: {
       type: Sequelize.STRING,
       allowNull: false,
