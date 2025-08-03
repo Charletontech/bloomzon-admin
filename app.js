@@ -43,6 +43,8 @@ const PlanFeatureRoute = require("./routes/plan.feature");
 const SellerPlanRoute = require("./routes/seller.plan");
 const eliteRoute = require("./routes/elite");
 const eliteAdminRoute = require("./routes/Bloomzon.eliteAdmin/elite.admin");
+const reelsRoute = require("./routes/reels");
+const reelsAdminRoute = require("./routes/BloomzonAdmin/reels.admin");
 
 const app = express();
 
@@ -117,6 +119,8 @@ app.use("/api/v1/selfshipping", selfShippingRoute);
 app.use("/api/v1/pickupshipping", pickupShippingRoute);
 app.use("/api/v1/elite", eliteRoute);
 app.use("/api/v1/elite/admin", eliteAdminRoute);
+app.use("/api/v1/reels/", reelsRoute);
+app.use("/api/v1/reels/admin", reelsAdminRoute);
 
 app.use(errorHandler);
 

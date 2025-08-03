@@ -66,8 +66,26 @@ db.EliteFeedback = require("./eliteAdmin/EliteFeedback.model.js")(
   sequelize,
   Sequelize
 );
-
 // models for Bloomzon Elite Admin service - stops
+
+// models for Bloomzon reels - starts
+db.Reels = require("./reels/reels.model.js")(sequelize, Sequelize);
+db.ReelPromotions = require("./reels/reelPromotions.model.js")(
+  sequelize,
+  Sequelize
+);
+db.ReelComments = require("./reels/comments.model.js")(sequelize, Sequelize);
+db.ReelUsers = require("./reels/reelsUser.model.js")(sequelize, Sequelize);
+db.ReelsNotifications = require("./reels/reelsNotifications.model.js")(
+  sequelize,
+  Sequelize
+);
+db.ReelsNotificationSettings =
+  require("./reels/reelsNotificationSettings.model.js")(sequelize, Sequelize);
+db.Follower = require("./reels/follower.model.js")(sequelize, Sequelize);
+db.PageLikes = require("./reels/pageLikes.model.js")(sequelize, Sequelize);
+db.ReelSales = require("./reels/reelSales.model.js")(sequelize, Sequelize);
+// models for Bloomzon reels - ends
 
 db.User = require("./user.model.js")(sequelize, Sequelize);
 db.Variable = require("./variable.model.js")(sequelize, Sequelize);
@@ -271,6 +289,62 @@ db.SellerBStoreIssueChat.belongsTo(db.User, {
 });
 db.SellerBStoreIssueMail.belongsTo(db.User, {
   foreignKey: { name: "replyBy" },
+});
+
+// define associations loop for models
+
+// // ReelUsers → Reels (One-to-Many)
+// db.ReelUsers.hasMany(db.Reels, {
+//   foreignKey: "userId",
+//   as: "reels",
+// });
+// db.Reels.belongsTo(db.ReelUsers, {
+//   foreignKey: "userId",
+//   as: "user",
+// });
+
+// // ReelUsers → ReelsNotifications (One-to-Many)
+// db.ReelUsers.hasMany(db.ReelsNotifications, {
+//   foreignKey: "userId",
+//   as: "notifications",
+// });
+// db.ReelsNotifications.belongsTo(db.ReelUsers, {
+//   foreignKey: "userId",
+//   as: "user",
+// });
+
+// // ReelUsers → ReelsNotificationSettings (One-to-One)
+// db.ReelUsers.hasOne(db.ReelsNotificationSettings, {
+//   foreignKey: "userId",
+//   as: "settings",
+// });
+// db.ReelsNotificationSettings.belongsTo(db.ReelUsers, {
+//   foreignKey: "userId",
+//   as: "user",
+// });
+
+// // Follower system (Self-referencing many-to-many with separate join model)
+// db.ReelUsers.hasMany(db.Followers, {
+//   foreignKey: "followerId",
+//   as: "following",
+// });
+// db.ReelUsers.hasMany(db.Followers, {
+//   foreignKey: "followingId",
+//   as: "followers",
+// });
+// db.Followers.belongsTo(db.ReelUsers, {
+//   foreignKey: "followerId",
+//   as: "follower",
+// });
+// db.Followers.belongsTo(db.ReelUsers, {
+//   foreignKey: "followingId",
+//   as: "following",
+// });
+
+Object.keys(db).forEach((modelName) => {
+  if (db[modelName].associate) {
+    db[modelName].associate(db);
+  }
 });
 
 module.exports = db;

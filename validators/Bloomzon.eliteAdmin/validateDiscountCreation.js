@@ -5,7 +5,7 @@ const validateDiscountCreation = async (req, res, next) => {
   console.log(req.body);
   const schema = Joi.object({
     title: Joi.string(),
-    discountProductId: Joi.string(),
+    discountProductId: Joi.string().required(),
     discountType: Joi.string().valid("percentage", "fixed").required(),
     discountAmount: Joi.number().required(),
     startDate: Joi.date().iso().required(),

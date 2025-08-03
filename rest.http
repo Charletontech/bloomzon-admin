@@ -1,10 +1,70 @@
+### REELS SELLER API STARTS
+# create reel
+POST http://127.0.0.1:85/api/v1/reels/create-reel
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYzNGYyYWM0LWRmMDMtNGI0NS1iNTdiLWMzYWMxNDI5ZTQzOCIsImlhdCI6MTc1MTgxNDI0MiwiZXhwIjoxNzU2OTk4MjQyfQ.DvDxQTnrGTB6OdAvV4yKp42SW8BfrJcR4WTWzFpTbow
+Content-Type: multipart/form-data; boundary=----FormBoundary
+
+------FormBoundary
+Content-Disposition: form-data; name="title"
+
+Split unit air conditioner (5 horse power)
+------FormBoundary
+Content-Disposition: form-data; name="description"
+
+This is a 5 horse power split unit air conditioner, perfect for large rooms and offices. It comes with a remote control and has energy-saving features.
+------FormBoundary
+Content-Disposition: form-data; name="keywords"
+
+["Air condition", "interior", "electronics"]
+------FormBoundary
+Content-Disposition: form-data; name="productId"
+
+f5be3b62-88e0-4f01-b7c0-1a1111e5d713
+------FormBoundary
+Content-Disposition: form-data; name="productName"
+
+LG Split unit air conditioner (5 horse power)
+------FormBoundary
+Content-Disposition: form-data; name="productCategory"
+
+Electronics
+------FormBoundary
+Content-Disposition: form-data; name="productSubCategory"
+
+Household
+------FormBoundary
+Content-Disposition: form-data; name="locations"
+
+["lagos", "Abuja", "Owerri"]
+------FormBoundary
+Content-Disposition: form-data; name="isPremiumReel"
+
+true
+------FormBoundary
+Content-Disposition: form-data; name="audience"
+
+everyone
+------FormBoundary
+Content-Disposition: form-data; name="moreOptions"
+
+{
+  "uploadHighQuality": true, "allowComments": true, "adultsOnly": false, 
+"hideLikesCount": false, "promotion": false, "enableClosedCaptions": false
+}
+------FormBoundary
+Content-Disposition: form-data; name="reel"; filename="phone1.jpg"
+Content-Type: image/jpeg
+
+< ./phone1.jpg
+------FormBoundary--
+
 ### ADMIN API STARTS
 # new elite user
 POST http://127.0.0.1:85/api/v1/elite/admin/register-new-elite-member
 content-type: application/json
 
 {
-    "name": "Johnny",
+    "name": "Johnny Doe",
     "email": "test@mail.com",
     "startDate": "2025-04-18T23:00:00.000Z",
     "endDate": "2025-05-18T23:00:00.000Z",

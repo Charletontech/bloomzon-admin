@@ -7,7 +7,7 @@ const schema = Joi.object({
   startDate: Joi.date().iso().required(),
   endDate: Joi.date().iso().required(),
   duration: Joi.number().required(),
-  status: Joi.string().valid("active", "inactive"),
+  status: Joi.string().valid("active", "expired", "cancelled"),
   freeDeliveryEligibility: Joi.string().valid("eligible", "not eligible"),
   discountEligibility: Joi.string().valid("eligible", "not eligible"),
   walletBalance: Joi.number().min(0),

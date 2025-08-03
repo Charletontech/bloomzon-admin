@@ -19,7 +19,8 @@ const connectDB = async () => {
 const syncedDB = async () => {
   try {
     await db.sequelize
-      .sync()
+      .sync({ alter: true })
+      // .sync()
       .then(() => {
         console.log(`Synced db.`.blue.underline.bold);
       })

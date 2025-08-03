@@ -45,7 +45,7 @@
         "jsonwebtoken": "latest",
         "mime-types": "latest",
         "mocha": "latest",
-        "moment": "latest",
+        "moment": "^2.30.1",
         "morgan": "latest",
         "multer": "latest",
         "mysql": "latest",
