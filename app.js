@@ -17,7 +17,7 @@ dotenv.config({ path: "./config/config.env" });
 // Connect to database
 const { connectDB, syncedDB, disconnectDB } = require("./config/db");
 connectDB();
- syncedDB();
+// syncedDB();
 
 // Route files
 const authRoute = require("./routes/auth");
