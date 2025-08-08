@@ -40,9 +40,6 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.ENUM("active", "inactive")
         },
         
-    },
-    {
-      timestamps: false, 
     });
     return Country;
 };
