@@ -8,10 +8,6 @@ module.exports = (sequelize, Sequelize) => {
     userId: {
       type: Sequelize.UUID,
       allowNull: false,
-      references: {
-        model: "reel_users",
-        key: "userId",
-      },
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
     },
