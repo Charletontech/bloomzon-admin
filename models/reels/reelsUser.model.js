@@ -8,7 +8,7 @@ module.exports = (sequelize, Sequelize) => {
     userId: {
       type: Sequelize.UUID,
       allowNull: false,
-      // unique: true,
+      unique: true,
     },
     fullName: {
       type: Sequelize.STRING,
@@ -76,24 +76,7 @@ module.exports = (sequelize, Sequelize) => {
       foreignKey: "followingId",
       as: "followers",
     });
-
-    // ReelUsers.hasMany(models.PageLikes, {
-    //   foreignKey: "liked",
-    //   as: "likesReceived",
-    // });
-
-    // ReelUsers.hasMany(models.PageLikes, {
-    //   foreignKey: "likedBy",
-    //   as: "likesGiven",
-    // });
   };
 
   return ReelUsers;
 };
-
-// const user = await ReelUsers.findByPk(userId, {
-//   include: [
-//     { model: PageLikes, as: "likesReceived" }, // who liked this user's page
-//     { model: PageLikes, as: "likesGiven" },    // what pages this user liked
-//   ],
-// });
