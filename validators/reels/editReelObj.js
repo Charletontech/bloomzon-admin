@@ -14,6 +14,7 @@ const schema = Joi.object({
   moreOptions: Joi.string().optional(),
   isPremiumReel: Joi.boolean().optional(),
   viewsCount: Joi.number().optional(),
+  likesCount: Joi.number().optional(),
 });
 
 const editReelObj = async (req, res, next) => {
