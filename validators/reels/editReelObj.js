@@ -13,6 +13,7 @@ const schema = Joi.object({
   audience: Joi.string().valid("everyone", "followers", "only-you").optional(),
   moreOptions: Joi.string().optional(),
   isPremiumReel: Joi.boolean().optional(),
+  viewsCount: Joi.number().optional(),
 });
 
 const editReelObj = async (req, res, next) => {
